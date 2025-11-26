@@ -35,6 +35,14 @@ dependencies {
     )
 }
 
+task testRemoteRunner(type: Test){
+    useJUnitPlatform{
+        includeTags("ApiRegistration","Api")
+    }
+    systemProperties(System.getProperties())
+
+}
+
 tasks.withType(Test) {
     useJUnitPlatform()
 

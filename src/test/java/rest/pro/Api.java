@@ -1,12 +1,15 @@
 package rest.pro;
 
 import models.*;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+@Tag("Api")
 public class Api {
     private static final UserJson USER = new UserJson("morpheus", "leader");
     private static final UserJson USER_PUT = new UserJson("Samson", "lead");

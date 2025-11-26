@@ -8,11 +8,13 @@ import models.UserRegistration;
 
 import static io.qameta.allure.Allure.step;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Tag("ApiRegistration")
 public class ApiRegistration {
 
     private static final String URL_LOGIN = "/api/login";
