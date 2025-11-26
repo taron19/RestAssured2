@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
+import static rest.pro.CustomListener.withCustomTemplates;
 
 
 @Tag("Api")
@@ -19,6 +20,7 @@ public class Api {
     @Test
     void shouldReturnCorrectEmailOfFirstUser() {
         UserResponseData response = step("shouldReturnCorrectEmailOfFirstUser", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .when()
                 .get(URL)
@@ -34,6 +36,7 @@ public class Api {
     @Test
     void sizeOfArrayShouldBeCorrect() {
         UserResponseData response = step("sizeOfArrayShouldBeCorrect", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .when()
                 .get(URL)
@@ -49,6 +52,7 @@ public class Api {
     @Test
     void shouldAddUser() {
         UserJsonPostResponse user = step("shouldAddUser", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .body(USER)
                 .when()
@@ -68,13 +72,14 @@ public class Api {
     void shouldDeleteUser() {
 
         step("shouldDeleteUser", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .when()
                 .delete(URL + "/2")
                 .then()
                 .spec(SpecCustoms.responseSpecificationDelete));
 
-        step("Verification successful");
+        step("deletion is successful");
 
     }
 
@@ -82,6 +87,7 @@ public class Api {
     void shouldUpdateUser() {
 
         UserJsonPutResponse putResponse = step("shouldUpdateUser", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .body(USER_PUT)
                 .when()
@@ -103,6 +109,7 @@ public class Api {
     void shoudReturnEmpty404Status() {
 
         String response = step("shoudReturnEmpty404Status", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .when()
                 .get(UNKNOWN)

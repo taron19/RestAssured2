@@ -1,6 +1,7 @@
 package rest.pro;
 
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import models.EmailResponseError;
 import models.RegisterResponse;
 import models.ResponseEmail;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
+import static rest.pro.CustomListener.withCustomTemplates;
 
 @Tag("ApiRegistration")
 public class ApiRegistration {
@@ -26,6 +28,7 @@ public class ApiRegistration {
     void shoudSuccessfullyLoginWith200Status() {
 
         RegisterResponse response = step("shoudSuccessfullyLoginWith200Status", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .body(USER_PUT2)
                 .when()
@@ -41,6 +44,7 @@ public class ApiRegistration {
     void shoudReturn400Status() {
 
         EmailResponseError error = step("shoudReturn400Status", () -> given()
+                .filter(withCustomTemplates())
                 .spec(SpecCustoms.requestSpecification)
                 .body(RESPONSE_EMAIL)
                 .when()
