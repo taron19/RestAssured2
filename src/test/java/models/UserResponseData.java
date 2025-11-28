@@ -18,6 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 public class UserResponseData {
 
-    private List<DataChecker> data;
+    private List<ResponseEmail> data;
 
 }
